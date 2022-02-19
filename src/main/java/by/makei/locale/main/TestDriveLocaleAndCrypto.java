@@ -3,16 +3,11 @@ package by.makei.locale.main;
 import by.makei.locale.util.ApacheCryptoUtil;
 import by.makei.locale.util.CryptoUtil;
 import by.makei.locale.util.ResourceManager;
-import org.apache.commons.codec.digest.Crypt;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -50,12 +45,12 @@ public class TestDriveLocaleAndCrypto {
         String line = null;
         String lineForEncryption = null;
         while (isInMenu) {
-            if(lineForEncryption == null) {
+            if (lineForEncryption == null) {
                 System.out.println(manager.getString("menu2.enterLine") + ":");
                 lineForEncryption = readLineFromConsole();
             }
-                printCryptoMenu();
-                line = readLineFromConsole();
+            printCryptoMenu();
+            line = readLineFromConsole();
 
             switch (line) {
                 case "1" -> {
@@ -63,8 +58,9 @@ public class TestDriveLocaleAndCrypto {
                     lineForEncryption = null;
                 }
                 case "2" -> {
-                    cryptoUtil.encryptionSha(lineForEncryption,"SHA-512");
-                    lineForEncryption = null;                }
+                    cryptoUtil.encryptionSha(lineForEncryption, "SHA3-512");
+                    lineForEncryption = null;
+                }
                 case "3" -> {
                     cryptoUtil.PBKDF2(lineForEncryption);
                     lineForEncryption = null;
@@ -90,7 +86,7 @@ public class TestDriveLocaleAndCrypto {
                 }
                 case "8" -> {
                     isInMenu = false;
-                    System.out.println( manager.getString("menu2.exit"));
+                    System.out.println(manager.getString("menu2.exit"));
                 }
                 default -> {
                     System.out.println(line + " " + manager.getString("menu1.incorrectChoice"));
@@ -140,7 +136,7 @@ public class TestDriveLocaleAndCrypto {
 
         System.out.println(manager.getString("menu2.chooseMethod") + ":");
         System.out.println("1 - " + "SHA256");
-        System.out.println("2 - " + "SHA512");
+        System.out.println("2 - " + "SHA3-512");
         System.out.println("3 - " + "PBKDF2");
         System.out.println("4 - " + "Apache SHA512 + 2334");
         System.out.println("5 - " + "Apache SHA256 + 2334");
