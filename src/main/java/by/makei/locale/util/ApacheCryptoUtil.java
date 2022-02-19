@@ -4,9 +4,9 @@ import org.apache.commons.codec.digest.Crypt;
 
 public enum ApacheCryptoUtil {
     INSTANCE;
-    private ResourceManager manager;
+    private final ResourceManager manager;
 
-    {
+    ApacheCryptoUtil() {
         manager = ResourceManager.INSTANCE;
     }
 
@@ -35,7 +35,6 @@ public enum ApacheCryptoUtil {
      */
     public void apacheCrypt(String lineForEncryption) {
         Crypt crypt = new Crypt();
-        //String encryptedString = crypt("1"); //sha512 and random salt
         String encryptedString = Crypt.crypt(lineForEncryption); //
 
         System.out.println(lineForEncryption + " " + manager.getString("menu2.enteredLine"));

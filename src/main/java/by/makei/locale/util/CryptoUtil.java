@@ -48,9 +48,9 @@ public enum CryptoUtil {
      * SHA3-512
      * https://docs.oracle.com/en/java/javase/17/docs/specs/security/standard-names.html
      *
-     * @param lineForEncryption String for encryption
+     * @param lineForEncryption   String for encryption
      * @param encryptionAlgorithm one of supported encryption algorithms
-     * @throws NoSuchAlgorithmException if encryptionAlgorithm is not found
+     * @throws NoSuchAlgorithmException     if encryptionAlgorithm is not found
      * @throws UnsupportedEncodingException
      */
     public void encryptionSha(String lineForEncryption, String encryptionAlgorithm) throws NoSuchAlgorithmException, UnsupportedEncodingException {
